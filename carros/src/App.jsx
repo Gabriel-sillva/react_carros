@@ -1,29 +1,38 @@
 import { useState } from "react";
-import { itensInicio } from "./Data/intem.js";
+import { itensInicio } from "./data/intem.js";
+import Card from "./components/Card";
+import Footer from "./components/Footer";
+import "./App.css";
 
-export default function App(){
-    const [items, setItems] = useState(itensInicio);
+export default function App() {
+  const [items] = useState(itensInicio);
+  const [favoritos, setFavoritos] = useState([]);
 
-    return(
-        <main>
-            <header>
-                <h1>
-                    carros hehheheheheheheheh
-                </h1>
-            </header>
-            
-            <section>
-                {
-                    items.map(item => (
-                        <p>
-                           {item.id} <br />
-                           {item.title} <br />
-                           <img src={item.imga} alt = {item.title} /> <br />
-                           {item.description} <br />
-                        </p>
-                    ))
-                }
-            </section>
-        </main>
-    )
+  const toggleFav = (id) => {
+    setFavoritos(prev => 
+      prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]
+    );
+  };
+
+  return (
+    <div className="app-container">
+      <header className="header-topo">
+        <h1>Loja de Carros</h1>
+        <div className="fav-counter">FAV {favoritos.length}</div>
+      </header>
+
+      <section className="container-cards">
+        {items.map(item => (
+          <Card 
+            key={item.id} 
+            item={item} 
+            isFav={favoritos.includes(item.id)} 
+            onFav={toggleFav} 
+          />
+        ))}
+      </section>
+
+      <Footer />
+    </div>
+  );
 }
