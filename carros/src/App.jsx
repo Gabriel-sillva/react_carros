@@ -17,7 +17,7 @@ export default function App() {
   return (
     <div className="app-container">
       <header className="header-topo">
-        <h1>Loja de Carros</h1>
+        <h1> Losantzz Motors</h1>
         <div className="fav-counter">FAV {favoritos.length}</div>
       </header>
 

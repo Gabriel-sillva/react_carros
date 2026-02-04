@@ -1,3 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+  color: #910505;
+  text-align: center;
+   
+}
+
+body{
+    background: linear-gradient(#b3b1b1, #434343, #444444);
+
+}
+
+p{
+  font-size: 20px;
+}
+
 .header-topo {
   display: flex;
   justify-content: space-between;
@@ -22,7 +42,8 @@
 }
 
 .Card {
-  border: 1px solid #ddd;
+  background-color: #a8a8a8;
+  border: 2px solid #000000;
   padding: 15px;
   border-radius: 12px;
   text-align: center;
@@ -30,13 +51,13 @@
 }
 
 .Card.favoritado {
-  border-color: #ffcc00;
-  background-color: #fffdf0;
+  border-color: #000000;
+  background-color: #afb2be;
 }
 
 .Card img {
   width: 100%;
-  height: 180px;
+  height: 300px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -47,6 +68,7 @@
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid #000;
+  background-color: #fdfffe;
 }
 
 .footer {
