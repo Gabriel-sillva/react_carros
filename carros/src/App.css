@@ -1,79 +1,205 @@
-*{
-    margin: 0;
-    padding: 0;
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1{
-  color: #910505;
-  text-align: center;
-   
+/* ===== BODY + BACKGROUND ===== */
+body {
+  position: relative;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("https://img.freepik.com/fotos-premium/estacionamento-subterraneo-garagem-subterranea-no-centro-comercial_1048944-15500950.jpg?semt=ais_hybrid&w=740&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-body{
-    background: linear-gradient(#b3b1b1, #434343, #444444);
-
+/* Overlay escuro */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: -1;
 }
 
-p{
-  font-size: 20px;
+.app-container {
+  position: relative;
+  z-index: 1;
 }
 
+/* ===== HEADER ===== */
 .header-topo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
-  border-bottom: 2px solid #333;
+  padding: 12px 32px;
 }
 
+.logo {
+  height: 200px;
+  width: auto;
+}
+
+/* FAV estilizado */
 .fav-counter {
-  background: #f0f0f0;
-  border: 2px solid #000;
-  padding: 5px 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  padding: 6px 14px;
   border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+
+/* ===== GRID DOS CARDS ===== */
+.container-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .container-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .container-cards {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
+/* ===== CARD ===== */
+.Carta-Container {
+  background: #a8a8a8;
+  border: 3px solid #333;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s;
+}
+
+.Carta-Container:hover {
+  transform: translateY(-10px);
+}
+
+.Carta-Container.favoritado {
+  border-color: #ffcc00;
+  background: #afb2be;
+}
+
+.carta-inner {
+  border: 2px solid #555;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 400px;
+}
+
+/* ===== HEADER DO CARD ===== */
+.carta-header-nome {
+  background: #222;
+  color: #ffcc00;
+  padding: 6px;
+  text-align: center;
+  border: 2px solid #ffcc00;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.carta-header-nome h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* ===== QUADRO SUPERIOR ===== */
+.carta-quadro-superior {
+  display: flex;
+  gap: 10px;
+  background: #e0e0e0;
+  padding: 8px;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.carta-img-box img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.carta-atributos {
+  font-size: 0.9rem;
+}
+
+.mod-destaque {
+  color: #b00;
   font-weight: bold;
 }
 
-.container-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
-  gap: 30px;
-  padding: 40px;
+/* ===== DESCRIÇÃO ===== */
+.carta-quadro-info {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 8px;
+  border-radius: 4px;
+  flex-grow: 1;
 }
 
-.Card {
-  background-color: #a8a8a8;
-  border: 2px solid #000000;
-  padding: 15px;
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.2s;
+.carta-quadro-info h3 {
+  font-size: 0.95rem;
+  border-bottom: 1px solid #333;
+  margin-bottom: 5px;
 }
 
-.Card.favoritado {
-  border-color: #000000;
-  background-color: #afb2be;
+.carta-texto-box p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  height: 100px;
+  overflow-y: auto;
+  color: #333;
 }
 
-.Card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
+/* ===== FAVORITO ===== */
+.carta-footer {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.btn-favoritar {
-  margin-top: 15px;
-  padding: 8px 16px;
+.btn-fav-card {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 2px solid #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  border-radius: 5px;
-  border: 1px solid #000;
-  background-color: #fdfffe;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.footer {
+.btn-fav-card:hover {
+  transform: scale(1.1);
+  background-color: #f2f2f2;
+}
+
+/* ===== FOOTER ===== */
+footer {
   text-align: center;
   padding: 20px;
-  border-top: 1px solid #ccc;
-  margin-top: 50px;
+  color: #fff;
 }

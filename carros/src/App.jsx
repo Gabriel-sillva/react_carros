@@ -2,6 +2,7 @@ import { useState } from "react";
 import { itensInicio } from "./data/intem.js";
 import Card from "./components/Card";
 import Footer from "./components/Footer";
+import logo from "./assets/logo-losantzz.png"; // ✅ FALTAVA ISSO
 import "./App.css";
 
 export default function App() {
@@ -9,25 +10,27 @@ export default function App() {
   const [favoritos, setFavoritos] = useState([]);
 
   const toggleFav = (id) => {
-    setFavoritos(prev => 
-      prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]
+    setFavoritos((prev) =>
+      prev.includes(id)
+        ? prev.filter((f) => f !== id)
+        : [...prev, id]
     );
   };
 
   return (
     <div className="app-container">
       <header className="header-topo">
-        <h1> Losantzz Motors</h1>
+        <img src={logo} alt="Losantzz Motors" className="logo" />
         <div className="fav-counter">FAV {favoritos.length}</div>
       </header>
 
       <section className="container-cards">
-        {items.map(item => (
-          <Card 
-            key={item.id} 
-            item={item} 
-            isFav={favoritos.includes(item.id)} 
-            onFav={toggleFav} 
+        {items.map((item) => (
+          <Card
+            key={item.id}
+            item={item}
+            isFav={favoritos.includes(item.id)}
+            onFav={toggleFav}
           />
         ))}
       </section>
